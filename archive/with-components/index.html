@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <title>Product App</title>
+    </head>
+    <body>
+        <div class="nav-bar"></div>
+        <div id="app">
+            <!-- What is placed here is global i.e. for all the products -->
+            <div class="cart">
+                <!-- Counts the number of id's in the array being pushed or added and popped or removed -->
+                <p> Cart ({{cart.length}})</p>
+            </div>
+            <product :premium="premium" @add-to-cart="increaseCart" @remove-from-cart="decreaseCart">
+                <!--
+                   @add-to-cart & @remove-from-cart listen for the events being emitted by
+                   the addToCart & removeFromCart functions respectively
+                 -->
+            </product>
+        </div>
+
+        <script src="vue.js"></script>
+
+        <script src="index.js"></script>
+    </body>
+</html>

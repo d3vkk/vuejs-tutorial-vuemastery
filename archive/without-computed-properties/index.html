@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <title>Product App</title>
+    </head>
+    <body>
+        <div class="nav-bar"></div>
+        <div id="app">
+            <div class="product">
+                <div class="product-image">
+                    <img v-bind:src="image">
+                </div>
+
+                <div class="product-info">
+                    <div v-show="inStock">
+                        <h1> {{ product }} </h1>
+                        <p v-if="inventory > 10">In Stock</p>
+                        <p v-else-if="inventory <= 10 && inventory > 0">Almost out of stock</p>
+                        <p v-else>Out of Stock</p>
+                        <ul>
+                            <li v-for="detail in details">{{ detail }}</li>
+                        </ul>
+
+                        <div v-for="variant in variants" :key="variant.id" class="color-box"
+                            :style="{backgroundColor: variant.color}" @mouseover="updateImage(variant.variantImage)">
+                            <!--
+                                '@' is equivalent to 'v-on'
+                                STYLE BINDING: variant.color is replaced with the actual color specified in index.js
+                            -->
+                        </div>
+
+                        <br>
+                        <a :href="moreinfo">More information</a>
+                        <br>
+
+                    </div>
+                    <!--
+                        COLOR BINDING:
+                        The button is disbled when 'inStock is false'.
+                        This triggers a css class - 'disabledButton' which changes the appearance of the button
+                    -->
+                    <button v-on:click="addToCart" :disabled="! inStock" :class="{ disabledButton: !inStock }">Add
+                        to Cart</button>
+                    <br>
+                    <button v-on:click="removeFromCart" :disabled="! inStock" :class="{ disabledButton: !inStock }">Remove from Cart</button>
+
+                    <style>
+                        /*
+                            Note that no dashes ('-') are allowed in naming in CSS e.g. line-through
+                        */
+                    </style>
+
+                    <div class="cart">
+                        <p> Cart ({{cart}})</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script src="vue.js"></script>
+
+        <script src="index.js"></script>
+    </body>
+</html>
