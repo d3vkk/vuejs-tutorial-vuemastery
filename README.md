@@ -14,7 +14,7 @@ To contribute, [use this guide](https://github.com/d3vkk/open-source/blob/master
 
 Star this repo for future reference
 
-[Open in browser-based Visual Studio Code](https://vscode.dev//github/d3vkk/vuejs-tutorial-vuemastery)
+[Open in browser-based Visual Studio Code](https://vscode.dev/github/d3vkk/vuejs-tutorial-vuemastery)
 
 Fork or clone this repo
 ```
